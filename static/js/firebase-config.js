@@ -4,12 +4,13 @@
 
 const firebaseConfig = {
     // Replace with your Firebase project configuration
-    apiKey: "your-api-key-here",
-    authDomain: "your-project-id.firebaseapp.com",
-    projectId: "your-project-id",
-    storageBucket: "your-project-id.appspot.com",
-    messagingSenderId: "123456789012",
-    appId: "your-app-id-here"
+    apiKey: "AIzaSyBMW1yw0nJtuNZRBj7smudwAVYcpjPYSO0",
+    authDomain: "arrow-root.firebaseapp.com",
+    projectId: "arrow-root",
+    storageBucket: "arrow-root.firebasestorage.app",
+    messagingSenderId: "832108756955",
+    appId: "1:832108756955:web:4e6855849a15015f8331fe",
+    measurementId: "G-4X494HBZSV"
 };
 
 // Instructions for setting up Firebase:
