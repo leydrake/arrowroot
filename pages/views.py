@@ -10,3 +10,9 @@ def about(request):
 
 def contact(request):
     return render(request, "contact.html")
+
+def admin_login(request):
+    return render(request, "admin_login.html")
+
+def admin_dashboard(request):
+    return render(request, "admin_dashboard.html")
