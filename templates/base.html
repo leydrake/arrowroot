@@ -34,8 +34,8 @@
     }
          /*admin_login.html css style  */
     .form-signin > form{
-        width: 300px;
-        max-width: 300px;
+        width: 320px;
+        max-width: 320px;
         padding: 15px;
         margin: auto;
        
@@ -55,6 +55,89 @@
         border-top-right-radius: 0;
       }
       /* admin_login.html css style end */
+
+      /* Theme toggle button styling */
+      .bd-mode-toggle { z-index: 1500; }
+      /* Floating FAB-style theme button */
+      .btn-bd-primary {
+          --fab-bg: #6f42c1; /* Bootstrap purple */
+          --fab-bg-hover: #5b36a1;
+          --fab-shadow: 0 6px 14px rgba(111, 66, 193, 0.4);
+          width: 50px;
+          height: 36px;
+          padding: 10px;
+          border-radius: 10%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: var(--fab-bg);
+          border: none;
+          color: #fff;
+          box-shadow: var(--fab-shadow);
+      }
+
+      .btn-bd-primary:hover,
+      .btn-bd-primary:focus {
+          background: var(--fab-bg-hover);
+          color: #fff;
+      }
+
+      .btn-bd-primary .theme-icon-active { 
+          width: 12px; 
+          height: 12px; 
+          color: #fff;
+          fill: #fff;
+      }
+
+      /* Dropdown appearance */
+      .bd-mode-toggle .dropdown-menu {
+          --bs-dropdown-min-width: 9rem; /* UL size */
+          border-radius: 10px;
+          padding: 4px; /* UL padding */
+          box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      }
+
+      .bd-mode-toggle .dropdown-menu .dropdown-item {
+          border-radius: 8px;
+          font-weight: 600;
+          font-size: 0.9rem; /* LI text size */
+          padding: 6px 10px; /* LI height */
+      }
+
+      .bd-mode-toggle .dropdown-menu .dropdown-item svg {
+          width: 12px;
+          height: 12px;
+          vertical-align: middle;
+          color: #fff;
+          fill: #fff;
+      }
+
+      .bd-mode-toggle .dropdown-menu .dropdown-item.active {
+          background-color: #3b82f6; /* blue highlight like screenshot */
+          color: #fff;
+      }
+
+      .bd-mode-toggle .dropdown-menu .dropdown-item:hover { background-color: var(--bs-tertiary-bg); }
+
+      .theme-icon-active { display: inline-block; width: 1rem; height: 1rem; }
+
+      /* Dark theme specific adjustments */
+      [data-bs-theme="dark"] .btn-bd-primary { color: #fff; }
+
+      [data-bs-theme="dark"] .bd-mode-toggle .dropdown-menu {
+          background-color: var(--bs-dark);
+          border-color: var(--bs-border-color);
+      }
+
+      [data-bs-theme="dark"] .bd-mode-toggle .dropdown-menu .dropdown-item {
+          color: var(--bs-body-color);
+      }
+
+      [data-bs-theme="dark"] .bd-mode-toggle .dropdown-menu .dropdown-item:hover {
+          background-color: var(--bs-tertiary-bg);
+          color: var(--bs-body-color);
+      }
+
     </style>
 
 </head>
@@ -79,7 +162,7 @@
                     </button>
                   </div>
             
-                  <div class="form-check ">
+                  <div class="form-check mb-2">
                     <input class="form-check-input" type="checkbox" value="remember-me" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">Remember me</label>
                   </div>
@@ -101,24 +184,52 @@
               </script>
         </div>
             
-            <div class="container">
-                
-                <div class="login-container">
-                    {% block content %}
-                    {% endblock %}
-                </div>
-                <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle"> <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (dark)"> <svg class="bi my-1 theme-icon-active" aria-hidden="true"><use href="#moon-stars-fill"></use></svg> <span class="visually-hidden" id="bd-theme-text">Toggle theme</span> </button> <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text" style=""> <li> <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false"> <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#sun-fill"></use></svg>
-                    Light
-                    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg> </button> </li> <li> <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark" aria-pressed="true"> <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#moon-stars-fill"></use></svg>
-                    Dark
-                    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg> </button> </li> <li> <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false"> <svg class="bi me-2 opacity-50" aria-hidden="true"><use href="#circle-half"></use></svg>
-                    Auto
-                    <svg class="bi ms-auto d-none" aria-hidden="true"><use href="#check2"></use></svg> </button> </li> </ul> </div>
-            </div>
+      <div class="theme-toggle">
+      <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (dark)">
+          <svg class="bi my-1 theme-icon-active" height="12px" width="12px" aria-hidden="true">
+            <use href="#moon-stars-fill"></use>
+          </svg>
+          <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+              <svg class="bi me-2 opacity-50" height="18px" width="18px" aria-hidden="true">
+                <use href="#sun-fill"></use>
+              </svg>
+              Light
+              <svg class="bi ms-auto d-none" height="18px" width="18px" aria-hidden="true">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark" aria-pressed="true">
+              <svg class="bi me-2 opacity-50" height="18px" width="18px" aria-hidden="true">
+                <use href="#moon-stars-fill"></use>
+              </svg>
+              Dark
+              <svg class="bi ms-auto d-none" height="18px" width="18px" aria-hidden="true">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" aria-pressed="false">
+              <svg class="bi me-2 opacity-50" height="18px" width="18px" aria-hidden="true">
+                <use href="#circle-half"></use>
+              </svg>
+              Auto
+              <svg class="bi ms-auto d-none" height="18px" width="18px"   aria-hidden="true">
+                <use href="#check2"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+        </div>     
             
-
-  
-
     <!-- SVG Icons for theme toggle -->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="sun-fill" viewBox="0 0 16 16">
