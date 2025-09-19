@@ -15,6 +15,7 @@ let settingsCollection = db.collection('settings');
 
 // Initialize admin functionality
 document.addEventListener('DOMContentLoaded', function() {
+   
     // Check if user is on admin pages
     if (window.location.pathname.includes('/admin/')) {
         initializeAdmin();
@@ -40,11 +41,7 @@ function initializeAdmin() {
         loginForm.addEventListener('submit', handleAdminLogin);
     }
     
-    // Setup password toggle
-    const togglePassword = document.getElementById('togglePassword');
-    if (togglePassword) {
-        togglePassword.addEventListener('click', togglePasswordVisibility);
-    }
+
     
     // Setup dashboard navigation
     setupDashboardNavigation();
@@ -94,19 +91,7 @@ async function handleAdminLogin(e) {
     }
 }
 
-// Toggle password visibility
-function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password');
-    const toggleBtn = document.getElementById('togglePassword');
-    
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        toggleBtn.innerHTML = '<i class="bi bi-eye-slash"></i>';
-    } else {
-        passwordInput.type = 'password';
-        toggleBtn.innerHTML = '<i class="bi bi-eye"></i>';
-    }
-}
+
 
 // Setup dashboard navigation
 function setupDashboardNavigation() {
