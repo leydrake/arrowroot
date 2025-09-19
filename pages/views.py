@@ -3,7 +3,7 @@
 from django.shortcuts import render
 
 def admin_login(request):
-    return render(request, "admin_login.html")
+    return render(request, "base.html")
 
 def admin_dashboard(request):
-    return render(request, "admin_dashboard.html")
+    return render(request, "base.html")
